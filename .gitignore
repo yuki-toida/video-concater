@@ -1,0 +1,31 @@
+# Binaries for programs and plugins
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Test binary, build with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# dep
+/vendor/
+
+# debug
+debug
+
+# .DS_Store
+*.DS_Store
+
+# static artifacts
+/assets/node_modules
+/assets/dist
+/assets/yarn-error.log
+
+# video files
+/outputs
+
+# mysql volume
+/mysql/data/
