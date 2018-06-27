@@ -1,9 +1,15 @@
 # video concat tools
 video files concat tools for web
 
-## run
+## run / build
+Running local server
 ```sh
-sh run.sh
+sh _run.sh
+```
+
+Build docker container
+```sh
+sh _build.sh
 ```
 
 ## License

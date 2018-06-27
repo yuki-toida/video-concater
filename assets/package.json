@@ -4,13 +4,14 @@
   "description": "video-concat",
   "author": "yuki-toida",
   "scripts": {
-    "dev": "webpack --mode development --watch",
-    "build": "webpack --mode production"
+    "watch": "webpack --mode development --watch --color",
+    "deploy": "webpack --mode production"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.7.0",
+    "copy-webpack-plugin": "^4.5.2",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-loader": "^2.0.0",

@@ -1,11 +1,14 @@
 const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 
-module.exports = {
+module.exports = (_, argv) => ({
   entry: './src/index.js',
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    filename: 'app.js',
+    path: argv.mode == 'development'
+      ? path.resolve(__dirname, '../static/js')
+      : path.resolve(__dirname, './_build')
   },
   devtool: 'source-map',
   module: {
@@ -44,5 +47,8 @@ module.exports = {
   },
   plugins: [
     new VueLoaderPlugin(),
+    new CopyWebpackPlugin([
+      { from: 'static', to: path.resolve(__dirname, '../static') }
+    ])
   ],  
-}
+});

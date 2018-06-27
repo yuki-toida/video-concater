@@ -13,19 +13,18 @@
 # dep
 /vendor/
 
-# debug
+# bin
 debug
+main
 
 # .DS_Store
 *.DS_Store
 
 # static artifacts
 /assets/node_modules
-/assets/dist
 /assets/yarn-error.log
-
-# video files
-/outputs
+/static
+assets.go
 
 # mysql volume
 /mysql/data/

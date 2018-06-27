@@ -1,0 +1,4 @@
+[server]
+host = "localhost"
+port = "8080"
+static-url = "https://storage.googleapis.com/bucket-tool-dev"

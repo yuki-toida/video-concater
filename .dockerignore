@@ -1,0 +1,4 @@
+# static artifacts
+/assets/node_modules
+/assets/yarn-error.log
+/static
