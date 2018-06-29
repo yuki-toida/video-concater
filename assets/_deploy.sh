@@ -7,7 +7,7 @@ fi
 
 ENV=$1
 CACHE_CONTROL='no-cache'
-DIST=gs://bucket-tool-$ENV/static/js
+DIST=gs://bucket-concat-$ENV/static/js
 
 echo remove .DS_Store
 find . -name '.DS_Store' -type f -ls -delete

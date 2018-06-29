@@ -1,16 +1,33 @@
 #!/bin/sh
 
+if [ "$1" != "dev" ] && [ "$1" != "prod" ]; then
+  echo "error. \$1 undefined env (dev or prod)"
+  exit 1
+fi
+
 # node process kill
 killall node
 
 dep ensure
 
-go-assets-builder templates -o assets.go
+# docker build -t hoge:latest .
 
-# docker build & push
-docker build -t yukitoida/video-concater:latest .
-docker push yukitoida/video-concater
+ENV=$1
+REGISTRY=asia.gcr.io/planet-pluto-$ENV
+IMAGE=concat-$ENV
 
-# remove docker image
-docker rmi -f yukitoida/video-concater:latest
-docker system prune
+# latest -> stable
+latest=`gcloud container images list-tags $REGISTRY/$IMAGE --filter='tags:latest'`
+if [ "$latest" != "" ]; then
+  gcloud container images add-tag $REGISTRY/$IMAGE:latest $REGISTRY/$IMAGE:stable
+fi
+
+# build and push latest
+gcloud container builds submit --config=_cloudbuild-${ENV}.yaml .
+
+# delete untag
+digest=`gcloud container images list-tags $REGISTRY/$IMAGE --filter='-tags:*' --format='get(digest)'`
+if [ "$digest" != "" ]; then
+  echo digest: $digest
+  gcloud container images delete --quiet $REGISTRY/$IMAGE@$digest
+fi

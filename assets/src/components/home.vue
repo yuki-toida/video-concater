@@ -3,7 +3,7 @@
     <div v-if="uid">
       <div v-if="isNotification" class="notification">
         <button v-on:click="isNotification = false" class="delete"></button>
-        <p>結合が正常に終了し、ダウンロード可能になりました。</p>
+        <p>結合が正常に終了し、ダウンロード可能になりました</p>
         <p><strong>保存期間は10分です。</strong></p>
       </div>
       <div class="field">
@@ -48,7 +48,9 @@
 <script>
 import axios from 'axios';
 
-const domain = 'http://localhost:8080';
+const domain = process.env.NODE_ENV === 'development'
+  ? 'http://localhost:8080'
+  : 'http://concat.theliveup.tv';
 let staticUrl = null;
 
 export default {
@@ -104,6 +106,7 @@ export default {
 
       axios.post(`${domain}/concat`, formData, {headers: {'Content-Type': 'multipart/form-data'}})
         .then(res => {
+          console.log(res.data);
           this.uid = res.data;
           this.inputs = [''];
           this.files = [];

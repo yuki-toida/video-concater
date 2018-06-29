@@ -1,0 +1,8 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+  - 'build'
+  - '--file=Dockerfile'
+  - '--tag=asia.gcr.io/$PROJECT_ID/concat-dev'
+  - '.'
+images: ['asia.gcr.io/$PROJECT_ID/concat-dev']

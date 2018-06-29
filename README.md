@@ -12,5 +12,10 @@ Build docker container
 sh _build.sh
 ```
 
+## deploy
+* https://cloud.google.com/container-optimized-os/docs/how-to/run-container-instance?hl=ja
+  * docker-credential-gcr configure-docker
+* docker run -it -d -p 80:8080 --name concat-dev asia.gcr.io/planet-pluto-dev/concat-dev
+
 ## License
 MIT

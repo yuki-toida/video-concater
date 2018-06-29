@@ -8,8 +8,8 @@ yarn install
 yarn run watch &
 cd ../
 
-dep ensure
+dep ensure -update -v
 
-go-assets-builder templates -o assets.go
-
-ENV=local go run main.go assets.go
+export ENV=local
+export GOOGLE_APPLICATION_CREDENTIALS="./cred/gcs.json"
+go run main.go

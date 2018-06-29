@@ -10,13 +10,6 @@
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 
-# dep
-/vendor/
-
-# bin
-debug
-main
-
 # .DS_Store
 *.DS_Store
 
@@ -24,9 +17,6 @@ main
 /assets/node_modules
 /assets/yarn-error.log
 /static
-
-# cred
-/cred
 
 # mysql volume
 /mysql/data/
